@@ -13,7 +13,6 @@ void insertAtBeginning(struct Node** head, int newData) {
     newNode->data = newData;
     newNode->next = *head;
     *head = newNode;
-    printf("Inserted %d at the beginning.\n", newData);
 }
 
 // Function to delete the first occurrence of a key from the linked list
@@ -25,7 +24,6 @@ void deleteNode(struct Node** head, int key) {
     if (temp != NULL && temp->data == key) {
         *head = temp->next;
         free(temp);
-        printf("Deleted %d from the list.\n", key);
         return;
     }
 
@@ -37,14 +35,12 @@ void deleteNode(struct Node** head, int key) {
 
     // If key is not present in the list
     if (temp == NULL) {
-        printf("%d not found in the list.\n", key);
         return;
     }
 
     // Unlink the node containing the key
     prev->next = temp->next;
     free(temp);
-    printf("Deleted %d from the list.\n", key);
 }
 
 // Function to display the linked list
@@ -59,8 +55,16 @@ void display(struct Node* head) {
 
 int main() {
     struct Node* head = NULL;
-    int choice, data;
+    int data;
+    
+    // Inserting the given elements into the linked list
+    insertAtBeginning(&head, 50);
+    insertAtBeginning(&head, 40);
+    insertAtBeginning(&head, 30);
+    insertAtBeginning(&head, 20);
+    insertAtBeginning(&head, 10);
 
+    int choice;
     while (1) {
         printf("\n1. Insert Element\n");
         printf("2. Delete Element\n");
