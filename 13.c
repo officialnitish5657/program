@@ -63,6 +63,18 @@ void display() {
 
 int main() {
     int choice, item;
+    int num_elements;
+    printf("Enter the number of elements to insert: ");
+    scanf("%d", &num_elements);
+    if (num_elements > MAX_SIZE) {
+        printf("Number of elements exceeds maximum queue size. Exiting...\n");
+        return 0;
+    }
+    printf("Enter the elements to insert: ");
+    for (int i = 0; i < num_elements; ++i) {
+        scanf("%d", &item);
+        enqueue(item);
+    }
     while (1) {
         printf("\n1. Insert Element\n");
         printf("2. Delete Element\n");
